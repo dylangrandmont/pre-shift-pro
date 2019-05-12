@@ -7,6 +7,9 @@ import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
+import FormLabel from '@material-ui/core/FormLabel';
+
+import './App.css';
 
 const styles = {
   canvas: {
@@ -31,83 +34,101 @@ function App(props) {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Grid container>
+      <Grid container spacing={16}>
         <Grid item xs={6}>
           <TextField
-            id="standard-name"
             label="Company"
             margin="normal"
+            fullWidth
           />
         </Grid>
         <Grid item xs={6}>
           <TextField
-            id="standard-name"
             label="Date"
+            type="date"
             margin="normal"
+            fullWidth
+            InputLabelProps={{
+              shrink: true,
+            }}
           />
         </Grid>
       </Grid>
-      <Grid container>
+      <Grid container spacing={16}>
         <Grid item xs={6}>
           <TextField
-            id="standard-name"
             label="Location"
             margin="normal"
+            fullWidth
           />
         </Grid>
         <Grid item xs={6}>
           <TextField
-            id="standard-name"
             label="Shift"
             margin="normal"
+            fullWidth
           />
         </Grid>
       </Grid>
       <Grid container>
         <Grid item xs={6}>
           <TextField
-            id="standard-name"
             label="Equipment #"
             margin="normal"
+            fullWidth
           />
         </Grid>
         <Grid item xs={6}>
           <TextField
-            id="standard-name"
             label="Type"
             margin="normal"
+            fullWidth
           />
         </Grid>
       </Grid>
       <TextField
-        id="standard-name"
         label="Explanation of Defects"
         margin="normal"
+        fullWidth
+        multiline
+        rowsMax="4"
       />
 
-      <TextField
-        id="standard-name"
-        label="Operator Name"
-        margin="normal"
-      />
-      <SignatureCanvas
-        penColor='green'
-        canvasProps={{width: 400, height: 80, className: "canvas"}}
-    />,
+      <Grid container>
+        <TextField
+          label="Operator Name"
+          margin="normal"
+        />
+        <FormLabel>
+          Operator Signature
+        </FormLabel>
+        <SignatureCanvas
+          penColor='green'
+          canvasProps={{width: 400, height: 80, className: "canvas"}}
+        />
+      </Grid>
 
-      <TextField
-        id="standard-name"
-        label="Mechanics Signature"
-        margin="normal"
-      />
-      <SignatureCanvas
-        penColor='green'
-        canvasProps={{width: 400, height: 80, className: "canvas" }}
-      />,
+      <Grid container>
+        <TextField
+          label="Mechanic Name"
+          margin="normal"
+        />
+        <FormLabel>
+          Mechanic Signature
+        </FormLabel>
+        <SignatureCanvas
+          penColor='green'
+          canvasProps={{width: 400, height: 80, className: "canvas" }}
+        />
+      </Grid>
 
-      <Button>
-        Submit
-      </Button>
+      <Grid container>
+        <Grid item xs={12}>
+          <Button>
+            Submit
+          </Button>
+        </Grid>
+      </Grid>
     </div>
   );
 }
