@@ -5,12 +5,15 @@ import SignatureCanvas from 'react-signature-canvas'
 import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
-
+import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
   canvas: {
     border: '1px solid black',
+  },
+  textBox: {
+    width: '100%',
   },
   title: {
     color: 'white',
@@ -28,38 +31,54 @@ function App(props) {
           </Typography>
         </Toolbar>
       </AppBar>
-      <TextField
-        id="standard-name"
-        label="Company"
-        margin="normal"
-      />
-
-      <TextField
-        id="standard-name"
-        label="Date"
-        margin="normal"
-      />
-      <TextField
-        id="standard-name"
-        label="Location"
-        margin="normal"
-      />
-      <TextField
-        id="standard-name"
-        label="Shift"
-        margin="normal"
-      />
-      <TextField
-        id="standard-name"
-        label="Equipment #"
-        margin="normal"
-      />
-      <TextField
-        id="standard-name"
-        label="Type"
-        margin="normal"
-      />
-
+      <Grid container>
+        <Grid item xs={6}>
+          <TextField
+            id="standard-name"
+            label="Company"
+            margin="normal"
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <TextField
+            id="standard-name"
+            label="Date"
+            margin="normal"
+          />
+        </Grid>
+      </Grid>
+      <Grid container>
+        <Grid item xs={6}>
+          <TextField
+            id="standard-name"
+            label="Location"
+            margin="normal"
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <TextField
+            id="standard-name"
+            label="Shift"
+            margin="normal"
+          />
+        </Grid>
+      </Grid>
+      <Grid container>
+        <Grid item xs={6}>
+          <TextField
+            id="standard-name"
+            label="Equipment #"
+            margin="normal"
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <TextField
+            id="standard-name"
+            label="Type"
+            margin="normal"
+          />
+        </Grid>
+      </Grid>
       <TextField
         id="standard-name"
         label="Explanation of Defects"
