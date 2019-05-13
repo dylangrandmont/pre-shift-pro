@@ -1,13 +1,8 @@
 import React from 'react';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import SignatureCanvas from 'react-signature-canvas'
 import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
-import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
-import FormLabel from '@material-ui/core/FormLabel';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
@@ -20,6 +15,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
+import Form from './Form';
 
 const drawerWidth = 240;
 const styles = theme => ({
@@ -104,7 +100,7 @@ class App extends React.Component {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" color="inherit" noWrap>
-              Responsive drawer
+              Pre Shift Pro
             </Typography>
           </Toolbar>
         </AppBar>
@@ -138,101 +134,7 @@ class App extends React.Component {
         </nav>
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          <Grid container spacing={16}>
-            <Grid item xs={6}>
-              <TextField
-                label="Company"
-                margin="normal"
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                label="Date"
-                type="date"
-                margin="normal"
-                fullWidth
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
-            </Grid>
-          </Grid>
-          <Grid container spacing={16}>
-            <Grid item xs={6}>
-              <TextField
-                label="Location"
-                margin="normal"
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                label="Shift"
-                margin="normal"
-                fullWidth
-              />
-            </Grid>
-          </Grid>
-          <Grid container>
-            <Grid item xs={6}>
-              <TextField
-                label="Equipment #"
-                margin="normal"
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                label="Type"
-                margin="normal"
-                fullWidth
-              />
-            </Grid>
-          </Grid>
-          <TextField
-            label="Explanation of Defects"
-            margin="normal"
-            fullWidth
-            multiline
-            rowsMax="4"
-          />
-
-          <Grid container>
-            <TextField
-              label="Operator Name"
-              margin="normal"
-            />
-            <FormLabel>
-              Operator Signature
-            </FormLabel>
-            <SignatureCanvas
-              penColor='green'
-              canvasProps={{width: 400, height: 80, className: "canvas"}}
-            />
-          </Grid>
-
-          <Grid container>
-            <TextField
-              label="Mechanic Name"
-              margin="normal"
-            />
-            <FormLabel>
-              Mechanic Signature
-            </FormLabel>
-            <SignatureCanvas
-              penColor='green'
-              canvasProps={{width: 400, height: 80, className: "canvas" }}
-            />
-          </Grid>
-
-          <Grid container>
-            <Grid item xs={12}>
-              <Button>
-                Submit
-              </Button>
-            </Grid>
-          </Grid>
+          <Form />
         </main>
       </div>
     );
