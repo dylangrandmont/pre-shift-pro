@@ -16,6 +16,10 @@ import ListItemText from '@material-ui/core/ListItemText';
 import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
 import Form from './Form';
+import SignIn from './SignIn';
+import { connect } from 'react-redux';
+import * as firebase from 'firebase';
+import { store } from './store';
 
 const drawerWidth = 240;
 const styles = theme => ({
@@ -50,6 +54,17 @@ const styles = theme => ({
   },
 });
 
+
+const signOut = () => {
+  firebase.auth().signOut().then(function() {
+    store.dispatch({ type: 'UPDATE_USER', payload: undefined });
+  }).catch(function(error) {});
+}
+
+const mapStateToProps = (state) => ({
+  isUserLoggedIn: !!state.user,
+})
+
 class App extends React.Component {
   state = {
     mobileOpen: false,
@@ -60,8 +75,7 @@ class App extends React.Component {
   };
 
   render() {
-    const { classes, theme } = this.props;
-
+    const { classes, theme, isUserLoggedIn } = this.props;
     const drawer = (
       <div>
         <div className={classes.toolbar} />
@@ -82,63 +96,73 @@ class App extends React.Component {
               <ListItemText primary={text} />
             </ListItem>
           ))}
+          <ListItem button key={'sign-out'} onClick={signOut}>
+            <ListItemIcon><MailIcon /></ListItemIcon>
+            <ListItemText primary={'Sign Out'}/>
+          </ListItem>
         </List>
       </div>
     );
 
-    return (
-      <div className={classes.root}>
-        <CssBaseline />
-        <AppBar position="fixed" className={classes.appBar}>
-          <Toolbar>
-            <IconButton
-              color="inherit"
-              aria-label="Open drawer"
-              onClick={this.handleDrawerToggle}
-              className={classes.menuButton}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" color="inherit" noWrap>
-              Pre Shift Pro
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        <nav className={classes.drawer}>
-          {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-          <Hidden smUp implementation="css">
-            <Drawer
-              container={this.props.container}
-              variant="temporary"
-              anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-              open={this.state.mobileOpen}
-              onClose={this.handleDrawerToggle}
-              classes={{
-                paper: classes.drawerPaper,
-              }}
-            >
-              {drawer}
-            </Drawer>
-          </Hidden>
-          <Hidden xsDown implementation="css">
-            <Drawer
-              classes={{
-                paper: classes.drawerPaper,
-              }}
-              variant="permanent"
-              open
-            >
-              {drawer}
-            </Drawer>
-          </Hidden>
-        </nav>
-        <main className={classes.content}>
-          <div className={classes.toolbar} />
-          <Form />
-        </main>
-      </div>
-    );
+    if (isUserLoggedIn) {
+      return (
+        <div className={classes.root}>
+          <CssBaseline />
+          <AppBar position="fixed" className={classes.appBar}>
+            <Toolbar>
+              <IconButton
+                color="inherit"
+                aria-label="Open drawer"
+                onClick={this.handleDrawerToggle}
+                className={classes.menuButton}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Typography variant="h6" color="inherit" noWrap>
+                Pre Shift Pro
+              </Typography>
+            </Toolbar>
+          </AppBar>
+          <nav className={classes.drawer}>
+            {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+            <Hidden smUp implementation="css">
+              <Drawer
+                container={this.props.container}
+                variant="temporary"
+                anchor={theme.direction === 'rtl' ? 'right' : 'left'}
+                open={this.state.mobileOpen}
+                onClose={this.handleDrawerToggle}
+                classes={{
+                  paper: classes.drawerPaper,
+                }}
+              >
+                {drawer}
+              </Drawer>
+            </Hidden>
+            <Hidden xsDown implementation="css">
+              <Drawer
+                classes={{
+                  paper: classes.drawerPaper,
+                }}
+                variant="permanent"
+                open
+              >
+                {drawer}
+              </Drawer>
+            </Hidden>
+          </nav>
+          <main className={classes.content}>
+            <div className={classes.toolbar} />
+            <Form />
+          </main>
+        </div>
+      );
+    } else {
+      return(
+        <SignIn />
+      );
+    }
   }
 }
-
-export default withStyles(styles, { withTheme: true })(App);
+const connectedApp = connect(mapStateToProps)(App);
+export default withStyles(styles, { withTheme: true })(connectedApp);
