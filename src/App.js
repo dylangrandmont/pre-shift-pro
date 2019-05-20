@@ -19,7 +19,7 @@ import Form from './Form';
 import SignIn from './SignIn';
 import { connect } from 'react-redux';
 import * as firebase from 'firebase';
-import { store } from './store';
+import { dispatch } from './store';
 import { signOutUser } from './actions';
 
 const drawerWidth = 240;
@@ -58,7 +58,7 @@ const styles = theme => ({
 
 const signOut = () => {
   firebase.auth().signOut().then(function() {
-    store.dispatch(signOutUser());
+    dispatch(signOutUser());
   }).catch(function(error) {});
 }
 
