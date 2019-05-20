@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import * as firebase from "firebase";
 import { Provider } from 'react-redux'
 import { store } from './store'
+import { signInUser, signOutUser } from './actions';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -38,8 +39,9 @@ firebase.auth().onAuthStateChanged(function(user) {
         const stateUser = {
             email,
         };
-        store.dispatch({ type: 'UPDATE_USER', payload: stateUser });
+
+        store.dispatch(signInUser(stateUser));
     } else {
-        store.dispatch({ type: 'UPDATE_USER', payload: undefined });
+        store.dispatch(signOutUser());
     }
   });
