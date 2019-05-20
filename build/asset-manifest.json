@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/pre-shift-pro/static/css/main.34de6062.chunk.css",
+    "main.js": "/pre-shift-pro/static/js/main.c84127d1.chunk.js",
+    "main.js.map": "/pre-shift-pro/static/js/main.c84127d1.chunk.js.map",
+    "runtime~main.js": "/pre-shift-pro/static/js/runtime~main.b69e1892.js",
+    "runtime~main.js.map": "/pre-shift-pro/static/js/runtime~main.b69e1892.js.map",
+    "static/js/2.bf0302d1.chunk.js": "/pre-shift-pro/static/js/2.bf0302d1.chunk.js",
+    "static/js/2.bf0302d1.chunk.js.map": "/pre-shift-pro/static/js/2.bf0302d1.chunk.js.map",
+    "index.html": "/pre-shift-pro/index.html",
+    "precache-manifest.42e243623f688ba751f2cad3a1bcf25d.js": "/pre-shift-pro/precache-manifest.42e243623f688ba751f2cad3a1bcf25d.js",
+    "service-worker.js": "/pre-shift-pro/service-worker.js",
+    "static/css/main.34de6062.chunk.css.map": "/pre-shift-pro/static/css/main.34de6062.chunk.css.map"
+  }
+}
