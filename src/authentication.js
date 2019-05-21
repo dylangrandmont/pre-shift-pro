@@ -19,14 +19,16 @@ export const initializeAuthentication = () => {
     if (user) {
         const {
             email,
+            uid,
         } = user;
         const stateUser = {
             email,
+            uid,
         };
   
         dispatch(signInUser(stateUser));
     } else {
         dispatch(signOutUser());
     }
-  }); 
+  });
 }

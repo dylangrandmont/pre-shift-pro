@@ -5,6 +5,7 @@ import SignatureCanvas from 'react-signature-canvas'
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import FormLabel from '@material-ui/core/FormLabel';
+import { writeSubmission } from './database';
 
 const styles = theme => ({
 });
@@ -102,7 +103,7 @@ function Form() {
 
         <Grid container>
         <Grid item xs={12}>
-            <Button>
+            <Button onClick={writeSubmission}>
             Submit
             </Button>
         </Grid>
