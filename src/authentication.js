@@ -1,6 +1,7 @@
 import { dispatch } from './store'
 import { auth, initializeApp } from 'firebase';
 import { signInUser, signOutUser } from './actions';
+import { readSubmissions } from './database';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCkeS4J1JK6HdRV1yAkF2ynsg3YEDQfAg4",
@@ -27,6 +28,7 @@ export const initializeAuthentication = () => {
         };
   
         dispatch(signInUser(stateUser));
+        readSubmissions();
     } else {
         dispatch(signOutUser());
     }

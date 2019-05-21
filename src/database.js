@@ -1,10 +1,11 @@
 import { database } from 'firebase';
-import { store } from './store';
+import { store, dispatch } from './store';
+import { updateSubmissions } from './actions';
 
-export const readUserData = () => {
-  const users = database().ref('users/');
-  users.on('value', function(snapshot) {
-    console.log(snapshot.val())
+export const readSubmissions = () => {
+  database().ref('submissions/').on('value', (snapshot) => {
+    const submissions = snapshot.val();
+    dispatch(updateSubmissions(submissions));
   });
 }
 
